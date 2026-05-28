@@ -1,0 +1,37 @@
+[
+    {
+    "id": "393c32c5-b313-4caa-a04d-5bb0cdf3bdeb",
+    "sku": "DELL-163GB-023",
+    "name": "Dell Model Ultra",
+    "description": "Official Dell product with manufacturer warranty",
+    "category": "mobiles",
+    "brand": "Dell",
+    "price": 31491.0,
+    "currency": "INR",
+    "discount_percent": 20,
+    "stock": 32,
+    "is_active": true,
+    "rating": 4.0,
+    "tags": [
+      "tablet",
+      "phone",
+      "gaming"
+    ],
+    "image_urls": [
+      "https://cdn.example.com/dell/front.png",
+      "https://cdn.example.com/dell/back.png"
+    ],
+    "dimensions_cm": {
+      "length": 33.2,
+      "width": 7.6,
+      "height": 2.2
+    },
+    "seller": {
+      "seller_id": "711c6d3a-cb5c-48ed-be49-eae99353580d",
+      "name": "Dell Exclusive",
+      "email": "support@dellexclusive.in",
+      "website": "https://www.dellexclusive.in"
+    },
+    "created_at": "2024-05-28T00:00:00Z"
+  }
+]
