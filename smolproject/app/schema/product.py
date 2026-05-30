@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field, AnyUrl, field_validator, model_validator,computed_field, EmailStr
 from typing import Annotated, Literal, Optional, List
-from uuid import UUID
+from uuid import UUID , uuid4
 from datetime import datetime
 
 

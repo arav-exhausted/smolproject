@@ -1,10 +1,10 @@
 # importing the basic libraries required  
 
 from fastapi import FastAPI, HTTPException , Query, Path
-from service.products import get_all_products
+from service.products import get_all_products, add_product , remove_product
 from schema.product import Product
-
-
+from uuid import uuid4, UUID
+from datetime import datetime
 # call the api in the form of app
 app = FastAPI()
 
@@ -21,7 +21,6 @@ def root():
 # gets the data to the products page
 
 @app.get("/products")
-
 
 # defined the function which lists the data throught the Query form
 # the function 
@@ -74,12 +73,24 @@ def get_product_by_id(product_id: str = Path(...,min_length=36,max_length=36,des
     raise HTTPException(status_code=404, detail="Product not Found!")
 
 
-
-
-
 @app.post("/products",status_code=201)
 
 def create_product(product: Product):
-    return product
+    product_dict = product.model_dump(mode="json")
+    product_dict["id"] = str(uuid4())    
+    product_dict["created_at"] = datetime.utcnow().isoformat() + "Z"
+    try:
+        add_product(product_dict)
+    except ValueError as e:
+        raise HTTPException(status_code=400,detail=str(e))
+    return product_dict
 
 
+@app.delete("/products/{product_id}")
+def delete_product(product_id:UUID = Path(...,description="Product ID", examples=["H423-4RD-993"])):
+    try:
+       response= remove_product(str(product_id))
+       return response
+    except Exception as e:
+        raise HTTPException(status_code=400,detail=str(e))
+    
